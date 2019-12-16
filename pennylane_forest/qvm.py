@@ -186,6 +186,9 @@ class QVMDevice(ForestDevice):
 
     def var(self, observable, wires, par):
         return np.var(self.sample(observable, wires, par))
+        
+    def cov(self, observable1, wires1, par1, observable2, wires2, par2):
+        return np.cov(self.sample(observable1, wires1, par1), self.sample(observable2, wires2, par2))[1, 1]
 
     def sample(self, observable, wires, par):
         n = self.shots
